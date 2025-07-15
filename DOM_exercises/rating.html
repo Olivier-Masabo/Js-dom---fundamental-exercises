@@ -43,13 +43,26 @@
 
     </div>
     <script>
+        let mainDiv = document.querySelector(".all")
      let stary= document.querySelectorAll(".far.fa-star")
      stary.forEach((element,index)=>{
         element.addEventListener("click",()=>{
             console.log("you rated ", index + 1 , " stars")
-            element.classList.toggle("changing")
+            // element.classList.toggle("changing")
+            let counter;
+            if(!element.classList.contains("changing")){
+            for( counter = index; counter >=0; counter--){
+                stary[counter].classList.add("changing")
+                }
+            } else{
+                for(let counter = index+1; counter <= stary.length-1; counter++){
+                    stary[counter].classList.remove("changing")
+                }
+            }
+
         })
      })
+     console.log(mainDiv.children)
       
     </script>
  </body>
