@@ -1,0 +1,153 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> online shopping cart</title>
+ </head>
+ <style>
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    #main{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .middle{
+            border: 2px solid lime;
+            padding: 40px;
+            position: relative;
+        }
+ .price {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: blue;
+    color: white;
+    padding: 5px 10px;
+    border-bottom-right-radius: 10px;
+    font-weight: bold;
+  }
+  h3{
+    text-align: center;
+    padding-bottom: 5px;
+  }
+  #buy {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: green;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+  .middle input[type="number"] {
+    width: 50%;
+    margin-top: 10px;
+    padding: 5px;
+     position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+ </style>
+ 
+ <body>
+    <h1>online shopping</h1>
+    <div id="main">
+        <div class="middle">
+            <h3>Laptop</h3>
+            <img src="img1.webp" alt="">
+            <div class="price">550 €</div>
+            <input type="number" id="numberValue">
+            <button id="buy">buy</button>
+        </div>
+
+        <div class="middle">
+            <h3>headphone</h3>
+            <img src="img2.webp" alt="">
+              <div class="price">30 €</div>
+            <input type="number" id="numberValue">
+            <button id="buy">buy</button>
+        </div>
+
+        <div class="middle">
+            <h3>Smart TV</h3>
+
+            <img src="img3.webp" alt="">
+              <div class="price">250 €</div>
+            <input type="number" id="numberValue">
+            <button id="buy">buy</button>
+        </div>
+    </div>
+    <div id="added">
+
+    </div>
+
+    <script>
+        let price = document.querySelector(".price").textContent
+        let input =document.getElementById("numberValue")
+        let buyButto =document.getElementById("buy")
+        let laptop =550;
+        let headphone =30;
+        let smarttv =250;
+        let added = document.getElementById("added")
+   
+        buyButto.addEventListener("click",function(){
+            if(input.value.length !==0){
+              let main =document.getElementById("added")
+              let item = document.querySelector("h3")
+              let tableItem = document.createElement("td")
+              tableItem.textContent = item.textContent
+              main.appendChild(tableItem)
+
+            let quantity = document.createElement("td")
+            quantity.textContent =input.value;
+            main.appendChild(quantity)
+
+            let priceItem =document.createElement("td")
+            priceItem.textContent =parseFloat(price)
+            main.appendChild(priceItem)
+
+            let total= document.createElement("td")
+            total.textContent = quantity * laptop
+            main.appendChild(total)
+
+              
+                
+    
+            let deletebtn =document.createElement("button")
+            deletebtn.textContent ="❌"
+            main.appendChild(deletebtn)
+            deletebtn.addEventListener("click",() =>{
+             added.remove()
+             console.log("delete clicked")
+                   
+                 })
+    
+        
+            added.append(deletebtn)
+          
+            console.log("item added to cart🛒")
+            }
+            else{
+                return 0;
+            }
+
+
+        })
+    </script>
+
+ </body>
+ </html>
